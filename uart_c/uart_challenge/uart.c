@@ -17,7 +17,12 @@
 
 void uart_init(uint8_t uart)
 {
-  // Implement me!!
+    #define UART2 2
+    UART2_CTL_R &= ~(UART_CTL_UARTEN)
+    UART2_IBRD_R |= 0x0a;
+    UART2_FBRD_R |= 0x36;
+    UART2_LCRH_R |= 0x60;
+    UART2_CTL_R |= UART_CTL_UARTEN
 }
 
 uint8_t uart_read(uint8_t uart, int blocking, int *read)
